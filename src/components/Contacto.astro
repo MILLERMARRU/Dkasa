@@ -1,0 +1,276 @@
+---
+---
+
+<section id="contacto" class="contacto">
+  <div class="contacto__inner">
+
+    <div class="contacto__left">
+      <p class="section-label reveal" style="color: var(--color-madera)">Contáctanos</p>
+      <h2 class="contacto__title reveal reveal-delay-1">
+        Visítanos.<br />
+        <em>Sin compromiso.</em>
+      </h2>
+      <p class="contacto__desc reveal reveal-delay-2">
+        Estamos en Nueva Cajamarca para resolver todas tus dudas sobre Techo Propio,
+        diseño de planos y presupuestos. La primera asesoría no tiene costo.
+      </p>
+
+      <div class="contacto__datos reveal reveal-delay-3">
+        <a href="https://wa.me/51917516901" target="_blank" rel="noopener" class="contacto__dato contacto__dato--wa">
+          <span class="contacto__dato-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.524 5.855L.057 23.5l5.79-1.52A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.694-.498-5.24-1.37l-.376-.222-3.899 1.023 1.04-3.793-.245-.389A9.953 9.953 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+            </svg>
+          </span>
+          <div>
+            <span class="contacto__dato-label">WhatsApp</span>
+            <span class="contacto__dato-val">917 516 901</span>
+          </div>
+        </a>
+
+        <div class="contacto__dato">
+          <span class="contacto__dato-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+          </span>
+          <div>
+            <span class="contacto__dato-label">Dirección</span>
+            <span class="contacto__dato-val">Jr. Tacna / Jr. San Luis<br />Nueva Cajamarca, San Martín</span>
+          </div>
+        </div>
+
+        <div class="contacto__dato">
+          <span class="contacto__dato-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </span>
+          <div>
+            <span class="contacto__dato-label">Atención</span>
+            <span class="contacto__dato-val">Lunes a Sábado<br />8:00 am — 6:00 pm</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formulario -->
+    <div class="contacto__form-wrap reveal reveal-delay-2">
+      <form class="contacto__form" name="contacto" method="POST" data-netlify="true">
+        <div class="contacto__field">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Juan Pérez" required />
+        </div>
+        <div class="contacto__field">
+          <label for="telefono">Teléfono / WhatsApp</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="9XX XXX XXX" required />
+        </div>
+        <div class="contacto__field">
+          <label for="interes">¿Qué necesitas?</label>
+          <select id="interes" name="interes">
+            <option value="">Selecciona una opción</option>
+            <option value="techo-propio">Información sobre Techo Propio</option>
+            <option value="planos">Diseño de planos</option>
+            <option value="presupuesto">Presupuesto de obra</option>
+            <option value="3d">Visualización 3D</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+        <div class="contacto__field">
+          <label for="mensaje">Mensaje (opcional)</label>
+          <textarea id="mensaje" name="mensaje" rows="3" placeholder="Cuéntanos sobre tu terreno o proyecto..."></textarea>
+        </div>
+        <button type="submit" class="contacto__submit">
+          Enviar consulta
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .contacto {
+    background: var(--color-canvas);
+    color: var(--color-text-dark);
+    padding: 8rem 0;
+  }
+
+  .contacto__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 6vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  /* Izquierda */
+  .contacto__left { display: grid; gap: 2rem; }
+
+  .contacto__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 4.5vw, 4rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--color-text-dark);
+  }
+
+  .contacto__title em {
+    font-style: italic;
+    color: var(--color-madera);
+  }
+
+  .contacto__desc {
+    font-size: 0.9375rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--color-text-mid);
+  }
+
+  /* Datos de contacto */
+  .contacto__datos { display: grid; gap: 0; }
+
+  .contacto__dato {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--color-border-lt);
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+  }
+  .contacto__dato:first-child { border-top: 1px solid var(--color-border-lt); }
+
+  .contacto__dato--wa:hover { color: var(--color-madera); }
+
+  .contacto__dato-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-border-lt);
+    border-radius: 6px;
+    flex-shrink: 0;
+    color: var(--color-text-mid);
+  }
+
+  .contacto__dato--wa .contacto__dato-icon {
+    background: #E8F5E9;
+    color: #2E7D32;
+  }
+
+  .contacto__dato div { display: grid; gap: 0.2rem; }
+
+  .contacto__dato-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-mute);
+  }
+
+  .contacto__dato-val {
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: var(--color-text-dark);
+    line-height: 1.5;
+  }
+
+  /* Formulario */
+  .contacto__form-wrap {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-lt);
+    border-radius: 8px;
+    padding: 2.5rem;
+  }
+
+  .contacto__form { display: grid; gap: 1.25rem; }
+
+  .contacto__field { display: grid; gap: 0.5rem; }
+
+  .contacto__field label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--color-text-mid);
+  }
+
+  .contacto__field input,
+  .contacto__field select,
+  .contacto__field textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: var(--color-text-dark);
+    background: var(--color-canvas);
+    border: 1px solid var(--color-border-lt);
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.2s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    resize: none;
+  }
+
+  .contacto__field input::placeholder,
+  .contacto__field textarea::placeholder {
+    color: var(--color-text-mute);
+    font-weight: 300;
+  }
+
+  .contacto__field input:focus,
+  .contacto__field select:focus,
+  .contacto__field textarea:focus {
+    border-color: var(--color-madera);
+  }
+
+  .contacto__submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.875rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--color-white);
+    background: var(--color-carbon);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+    margin-top: 0.5rem;
+  }
+  .contacto__submit:hover {
+    background: var(--color-madera);
+    transform: scale(0.99);
+  }
+  .contacto__submit:active { transform: scale(0.97); }
+
+  @media (max-width: 900px) {
+    .contacto__inner {
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .contacto { padding: 5rem 0; }
+    .contacto__form-wrap { padding: 1.75rem; }
+  }
+</style>

@@ -1,0 +1,243 @@
+---
+const servicios = [
+  {
+    id: '01',
+    titulo: 'Arquitectura',
+    desc: 'Diseño funcional y estético adaptado al terreno, clima y presupuesto de cada familia. Planos aprobados por municipalidad.',
+    grande: true,
+  },
+  {
+    id: '02',
+    titulo: 'Estructura',
+    desc: 'Cálculo estructural con normativa E.030 sismo-resistente. Seguridad ante todo.',
+    grande: false,
+  },
+  {
+    id: '03',
+    titulo: 'Instalaciones Sanitarias',
+    desc: 'Diseño de redes de agua y desagüe conforme al RNE. Coordinado con la estructura.',
+    grande: false,
+  },
+  {
+    id: '04',
+    titulo: 'Instalaciones Eléctricas',
+    desc: 'Proyecto eléctrico con tableros, circuitos y puntos de fuerza según norma EM.010.',
+    grande: false,
+  },
+  {
+    id: '05',
+    titulo: 'Visualización 3D',
+    desc: 'Renders fotorrealistas antes de construir. Ver tu hogar antes de que exista.',
+    grande: true,
+  },
+  {
+    id: '06',
+    titulo: 'Ejecución de Obra',
+    desc: 'Dirección técnica y construcción directa. Supervisamos cada etapa.',
+    grande: false,
+  },
+  {
+    id: '07',
+    titulo: 'Diseños Urbanos y Rurales',
+    desc: 'Proyectos habitacionales tanto en zonas urbanas consolidadas como en áreas rurales.',
+    grande: false,
+  },
+  {
+    id: '08',
+    titulo: 'Subdivisiones e Independizaciones',
+    desc: 'Trámites técnicos y legales para dividir o independizar predios ante la municipalidad y SUNARP.',
+    grande: false,
+  },
+]
+---
+
+<section id="servicios" class="servicios">
+  <div class="servicios__inner">
+
+    <div class="servicios__header">
+      <p class="section-label reveal">Nuestros servicios</p>
+      <div class="servicios__header-row">
+        <h2 class="servicios__title reveal reveal-delay-1">
+          Todo lo que necesita<br />tu vivienda
+        </h2>
+        <p class="servicios__sub reveal reveal-delay-2">
+          Ocho especialidades bajo un mismo equipo.
+          Desde el plano hasta la llave en mano.
+        </p>
+      </div>
+    </div>
+
+    <!-- Bento grid asimétrico -->
+    <div class="servicios__grid">
+      {servicios.map((s, i) => (
+        <article
+          class={`servicios__card reveal reveal-delay-${(i % 4) + 1} ${s.grande ? 'servicios__card--grande' : ''}`}
+          style={`--index: ${i}`}
+        >
+          <span class="servicios__card-id">{s.id}</span>
+          <h3 class="servicios__card-title">{s.titulo}</h3>
+          <p class="servicios__card-desc">{s.desc}</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="servicios__footer reveal">
+      <p>Precios módicos · Al alcance de todos los bolsillos</p>
+      <a href="#contacto" class="servicios__cta">
+        Solicitar cotización
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .servicios {
+    background: var(--color-carbon);
+    color: var(--color-bone);
+    padding: 8rem 0;
+  }
+
+  .servicios__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 6vw;
+    display: grid;
+    gap: 4rem;
+  }
+
+  /* Header */
+  .servicios__header { display: grid; gap: 1.5rem; }
+
+  .servicios__header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 4rem;
+  }
+
+  .servicios__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 4.5vw, 4rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--color-bone);
+  }
+
+  .servicios__sub {
+    font-size: 0.9375rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(245, 242, 238, 0.45);
+    max-width: 280px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  /* Bento grid */
+  .servicios__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(245, 242, 238, 0.08);
+    border: 1px solid rgba(245, 242, 238, 0.08);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .servicios__card {
+    background: #1C1C1A;
+    padding: 2.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: background 0.25s ease;
+  }
+
+  .servicios__card:hover {
+    background: #222220;
+  }
+
+  .servicios__card--grande {
+    grid-column: span 2;
+    background: #1E1E1C;
+  }
+
+  .servicios__card-id {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--color-madera);
+    opacity: 0.8;
+  }
+
+  .servicios__card-title {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--color-bone);
+    line-height: 1.3;
+    margin-top: auto;
+  }
+
+  .servicios__card--grande .servicios__card-title {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  .servicios__card-desc {
+    font-size: 0.8125rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(245, 242, 238, 0.45);
+  }
+
+  /* Footer */
+  .servicios__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(245, 242, 238, 0.08);
+    font-size: 0.875rem;
+    color: rgba(245, 242, 238, 0.4);
+  }
+
+  .servicios__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-carbon);
+    background: var(--color-bone);
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .servicios__cta:hover {
+    background: var(--color-madera);
+    color: var(--color-white);
+    transform: scale(0.98);
+  }
+
+  @media (max-width: 900px) {
+    .servicios__header-row { flex-direction: column; align-items: flex-start; }
+    .servicios__sub { text-align: left; max-width: 100%; }
+    .servicios__grid { grid-template-columns: 1fr 1fr; }
+    .servicios__card--grande { grid-column: span 2; }
+  }
+
+  @media (max-width: 600px) {
+    .servicios { padding: 5rem 0; }
+    .servicios__grid { grid-template-columns: 1fr; }
+    .servicios__card--grande { grid-column: span 1; }
+    .servicios__footer { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
+  }
+</style>

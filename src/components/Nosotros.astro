@@ -1,0 +1,223 @@
+---
+const valores = [
+  {
+    num: '01',
+    titulo: 'Seguridad primero',
+    desc: 'Ninguna tarea justifica exponer la vida o la salud de nuestros trabajadores. Cumplimos la normativa SST al pie de la letra.',
+  },
+  {
+    num: '02',
+    titulo: 'Calidad estructural',
+    desc: 'Usamos materiales certificados y procesos de control en cada etapa, desde el diseño hasta la entrega de llaves.',
+  },
+  {
+    num: '03',
+    titulo: 'Compromiso humano',
+    desc: 'Trabajamos con familias peruanas que buscan su primera vivienda. Entendemos lo que significa ese esfuerzo.',
+  },
+  {
+    num: '04',
+    titulo: 'Precios accesibles',
+    desc: 'Diseñamos soluciones dentro del programa Techo Propio para que más familias puedan acceder a una vivienda digna.',
+  },
+]
+---
+
+<section id="nosotros" class="nosotros">
+  <div class="nosotros__inner">
+
+    <!-- Cabecera -->
+    <div class="nosotros__header">
+      <p class="section-label reveal">Quiénes somos</p>
+      <h2 class="nosotros__title reveal reveal-delay-1">
+        Construimos viviendas.<br />
+        <span>Construimos familias.</span>
+      </h2>
+    </div>
+
+    <!-- Texto principal -->
+    <div class="nosotros__body">
+      <p class="nosotros__lead reveal reveal-delay-2">
+        Somos <strong>Constructora e Ingeniería Dikassa S.A.C.</strong>, empresa peruana
+        dedicada al diseño, desarrollo y ejecución de proyectos habitacionales en la
+        región San Martín. Operamos bajo el programa <em>Techo Propio</em> del gobierno
+        peruano, llevando viviendas dignas a precios al alcance de todos los bolsillos.
+      </p>
+      <p class="nosotros__lead reveal reveal-delay-3">
+        Desde nuestra oficina en Jr. Tacna / Jr. San Luis, Nueva Cajamarca, asesoramos
+        a cada familia sin compromiso, acompañando el proceso desde los planos hasta
+        la entrega final.
+      </p>
+    </div>
+
+    <!-- Valores en grid -->
+    <div class="nosotros__valores">
+      {valores.map((v, i) => (
+        <div class={`nosotros__valor reveal reveal-delay-${i + 1}`}>
+          <span class="nosotros__valor-num">{v.num}</span>
+          <h3 class="nosotros__valor-title">{v.titulo}</h3>
+          <p class="nosotros__valor-desc">{v.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Stat bar -->
+    <div class="nosotros__stats reveal">
+      <div class="nosotros__stat">
+        <span class="nosotros__stat-num">+150</span>
+        <span class="nosotros__stat-label">Familias atendidas</span>
+      </div>
+      <div class="nosotros__stat-div" aria-hidden="true"></div>
+      <div class="nosotros__stat">
+        <span class="nosotros__stat-num">8</span>
+        <span class="nosotros__stat-label">Especialidades técnicas</span>
+      </div>
+      <div class="nosotros__stat-div" aria-hidden="true"></div>
+      <div class="nosotros__stat">
+        <span class="nosotros__stat-num">100%</span>
+        <span class="nosotros__stat-label">Obras entregadas</span>
+      </div>
+      <div class="nosotros__stat-div" aria-hidden="true"></div>
+      <div class="nosotros__stat">
+        <span class="nosotros__stat-num">S.A.C.</span>
+        <span class="nosotros__stat-label">Empresa formal registrada</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .nosotros {
+    background: var(--color-canvas);
+    color: var(--color-text-dark);
+    padding: 8rem 0;
+  }
+
+  .nosotros__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 6vw;
+    display: grid;
+    gap: 5rem;
+  }
+
+  /* Cabecera */
+  .nosotros__header { display: grid; gap: 1.25rem; }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-madera);
+  }
+
+  .nosotros__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--color-text-dark);
+  }
+
+  .nosotros__title span {
+    color: var(--color-text-mute);
+  }
+
+  /* Texto */
+  .nosotros__body { display: grid; gap: 1.25rem; max-width: 680px; }
+
+  .nosotros__lead {
+    font-size: 1.0625rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--color-text-mid);
+  }
+
+  .nosotros__lead strong { font-weight: 600; color: var(--color-text-dark); }
+  .nosotros__lead em    { font-style: normal; color: var(--color-madera); }
+
+  /* Valores bento */
+  .nosotros__valores {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--color-border-lt);
+    border: 1px solid var(--color-border-lt);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .nosotros__valor {
+    background: var(--color-surface);
+    padding: 2.5rem;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .nosotros__valor-num {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--color-madera);
+  }
+
+  .nosotros__valor-title {
+    font-size: 1.0625rem;
+    font-weight: 500;
+    color: var(--color-text-dark);
+    line-height: 1.3;
+  }
+
+  .nosotros__valor-desc {
+    font-size: 0.875rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--color-text-mute);
+  }
+
+  /* Stats */
+  .nosotros__stats {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--color-border-lt);
+  }
+
+  .nosotros__stat { display: grid; gap: 0.25rem; }
+
+  .nosotros__stat-num {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    font-weight: 400;
+    color: var(--color-text-dark);
+    line-height: 1;
+  }
+
+  .nosotros__stat-label {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--color-text-mute);
+    letter-spacing: 0.02em;
+  }
+
+  .nosotros__stat-div {
+    width: 1px;
+    height: 40px;
+    background: var(--color-border-lt);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .nosotros { padding: 5rem 0; }
+    .nosotros__valores { grid-template-columns: 1fr; }
+    .nosotros__stats {
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .nosotros__stat-div { display: none; }
+  }
+</style>

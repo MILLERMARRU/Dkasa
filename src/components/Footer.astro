@@ -1,0 +1,184 @@
+---
+const year = new Date().getFullYear()
+const links = [
+  { label: 'Nosotros',     href: '#nosotros'     },
+  { label: 'Servicios',    href: '#servicios'    },
+  { label: 'Techo Propio', href: '#techo-propio' },
+  { label: 'Proyectos',    href: '#proyectos'    },
+  { label: 'Contacto',     href: '#contacto'     },
+]
+---
+
+<footer class="footer">
+  <div class="footer__inner">
+
+    <div class="footer__brand">
+      <a href="/" class="footer__logo" aria-label="Dikassa inicio">
+        <span class="footer__logo-mark">D</span>
+        <span class="footer__logo-text">IKASSA</span>
+      </a>
+      <p class="footer__tagline">
+        Construyendo con seguridad,<br />calidad y compromiso humano.
+      </p>
+      <a href="https://wa.me/51917516901" target="_blank" rel="noopener" class="footer__wa">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.524 5.855L.057 23.5l5.79-1.52A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.694-.498-5.24-1.37l-.376-.222-3.899 1.023 1.04-3.793-.245-.389A9.953 9.953 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+        </svg>
+        917 516 901
+      </a>
+    </div>
+
+    <nav class="footer__nav" aria-label="Footer nav">
+      <p class="footer__nav-label">Páginas</p>
+      {links.map(l => <a href={l.href} class="footer__nav-link">{l.label}</a>)}
+    </nav>
+
+    <div class="footer__info">
+      <p class="footer__nav-label">Ubicación</p>
+      <p class="footer__address">
+        Jr. Tacna / Jr. San Luis<br />
+        Nueva Cajamarca, San Martín<br />
+        Perú
+      </p>
+      <p class="footer__nav-label" style="margin-top:1.5rem">Registro</p>
+      <p class="footer__address">
+        Constructora e Ingeniería<br />
+        Dikassa S.A.C.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="footer__bottom">
+    <p>&copy; {year} Dikassa S.A.C. Todos los derechos reservados.</p>
+    <p>Nueva Cajamarca, San Martín — Perú</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: #0E0E0C;
+    color: var(--color-bone);
+    border-top: 1px solid rgba(245, 242, 238, 0.06);
+  }
+
+  .footer__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 6vw 4rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  /* Brand */
+  .footer__brand { display: grid; gap: 1.25rem; }
+
+  .footer__logo {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.1em;
+    text-decoration: none;
+  }
+
+  .footer__logo-mark {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-style: italic;
+    color: var(--color-madera);
+    line-height: 1;
+  }
+
+  .footer__logo-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--color-bone);
+  }
+
+  .footer__tagline {
+    font-size: 0.875rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(245, 242, 238, 0.4);
+    max-width: 260px;
+  }
+
+  .footer__wa {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: rgba(245, 242, 238, 0.55);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    width: fit-content;
+  }
+  .footer__wa:hover { color: var(--color-madera); }
+
+  /* Nav */
+  .footer__nav { display: grid; gap: 0.625rem; align-content: start; }
+
+  .footer__nav-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245, 242, 238, 0.25);
+    margin-bottom: 0.375rem;
+  }
+
+  .footer__nav-link {
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: rgba(245, 242, 238, 0.5);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .footer__nav-link:hover { color: var(--color-bone); }
+
+  /* Info */
+  .footer__info { display: grid; gap: 0.375rem; align-content: start; }
+
+  .footer__address {
+    font-size: 0.875rem;
+    font-weight: 300;
+    line-height: 1.65;
+    color: rgba(245, 242, 238, 0.5);
+  }
+
+  /* Bottom */
+  .footer__bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 6vw;
+    border-top: 1px solid rgba(245, 242, 238, 0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .footer__bottom p {
+    font-size: 0.725rem;
+    font-weight: 300;
+    color: rgba(245, 242, 238, 0.25);
+  }
+
+  @media (max-width: 900px) {
+    .footer__inner { grid-template-columns: 1fr 1fr; }
+    .footer__brand { grid-column: span 2; }
+  }
+
+  @media (max-width: 600px) {
+    .footer__inner {
+      grid-template-columns: 1fr;
+      padding: 4rem 6vw 3rem;
+    }
+    .footer__brand { grid-column: span 1; }
+    .footer__bottom { flex-direction: column; align-items: flex-start; gap: 0.375rem; }
+  }
+</style>

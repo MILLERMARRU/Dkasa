@@ -1,0 +1,219 @@
+---
+const pasos = [
+  { num: '1', titulo: 'Califica al bono', desc: 'Verificamos si tu familia cumple los requisitos de ingresos del programa Techo Propio del MVCS.' },
+  { num: '2', titulo: 'Elegimos el diseño', desc: 'Te presentamos opciones de vivienda dentro de los parámetros del programa. Tú decides.' },
+  { num: '3', titulo: 'Gestionamos la documentación', desc: 'Preparamos planos, memorias y expediente técnico para aprobación municipal.' },
+  { num: '4', titulo: 'Construimos', desc: 'Iniciamos la obra con supervisión técnica permanente. Te informamos en cada etapa.' },
+]
+---
+
+<section id="techo-propio" class="techo">
+  <div class="techo__inner">
+
+    <div class="techo__left">
+      <p class="section-label reveal">Programa del Estado</p>
+      <h2 class="techo__title reveal reveal-delay-1">
+        Techo Propio:<br />
+        <em>tu vivienda con apoyo del Estado</em>
+      </h2>
+      <p class="techo__desc reveal reveal-delay-2">
+        Techo Propio es el programa del Ministerio de Vivienda, Construcción y Saneamiento
+        que otorga un <strong>Bono Familiar Habitacional (BFH)</strong> a familias peruanas
+        de bajos ingresos para adquirir, construir o mejorar su vivienda.
+      </p>
+      <p class="techo__desc reveal reveal-delay-3">
+        En Dikassa somos ejecutores acreditados. Conocemos el proceso de punta a punta
+        y te acompañamos desde la calificación hasta la entrega.
+      </p>
+      <a href="#contacto" class="techo__btn reveal reveal-delay-4">
+        Consulta si calificas — es gratis
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="techo__right">
+      <div class="techo__pasos">
+        {pasos.map((p, i) => (
+          <div class={`techo__paso reveal reveal-delay-${i + 1}`}>
+            <span class="techo__paso-num">{p.num}</span>
+            <div>
+              <h3 class="techo__paso-title">{p.titulo}</h3>
+              <p class="techo__paso-desc">{p.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Franja de datos -->
+  <div class="techo__franja">
+    <div class="techo__franja-inner">
+      <p class="reveal">
+        <strong>¿A quién aplica?</strong> Familias sin vivienda propia, con ingresos hasta S/ 3,688 mensuales (modalidad Construcción en Sitio Propio).
+      </p>
+      <span class="techo__franja-sep" aria-hidden="true"></span>
+      <p class="reveal reveal-delay-1">
+        <strong>¿Qué cubre el bono?</strong> Hasta S/ 33,200 dependiendo del valor de la vivienda y la modalidad elegida.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .techo {
+    background: var(--color-canvas);
+    color: var(--color-text-dark);
+    padding: 8rem 0 0;
+  }
+
+  .techo__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 6vw 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  /* Lado izquierdo */
+  .techo__left { display: grid; gap: 1.5rem; }
+
+  .techo__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 4vw, 3.75rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--color-text-dark);
+  }
+
+  .techo__title em {
+    font-style: italic;
+    color: var(--color-madera);
+  }
+
+  .techo__desc {
+    font-size: 0.9375rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--color-text-mid);
+  }
+
+  .techo__desc strong {
+    font-weight: 600;
+    color: var(--color-text-dark);
+  }
+
+  .techo__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-white);
+    background: var(--color-carbon);
+    border-radius: 3px;
+    text-decoration: none;
+    width: fit-content;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .techo__btn:hover {
+    background: var(--color-madera);
+    transform: scale(0.98);
+  }
+
+  /* Pasos */
+  .techo__pasos { display: grid; gap: 0; }
+
+  .techo__paso {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--color-border-lt);
+  }
+  .techo__paso:first-child { border-top: 1px solid var(--color-border-lt); }
+
+  .techo__paso-num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--color-madera);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 2rem;
+    text-align: center;
+  }
+
+  .techo__paso-title {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-text-dark);
+    margin-bottom: 0.375rem;
+  }
+
+  .techo__paso-desc {
+    font-size: 0.8125rem;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--color-text-mute);
+  }
+
+  /* Franja informativa */
+  .techo__franja {
+    background: var(--color-carbon);
+    padding: 2.5rem 6vw;
+  }
+
+  .techo__franja-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .techo__franja p {
+    font-size: 0.875rem;
+    font-weight: 300;
+    line-height: 1.65;
+    color: rgba(245, 242, 238, 0.55);
+    flex: 1;
+  }
+
+  .techo__franja strong {
+    font-weight: 500;
+    color: var(--color-bone);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .techo__franja-sep {
+    width: 1px;
+    height: 50px;
+    background: rgba(245, 242, 238, 0.1);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 900px) {
+    .techo__inner {
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+    .techo__franja-inner {
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .techo__franja-sep { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .techo { padding: 5rem 0 0; }
+  }
+</style>
