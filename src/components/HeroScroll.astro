@@ -1,0 +1,342 @@
+---
+const TOTAL_FRAMES = 288
+---
+
+<section id="hero" class="hero">
+  <div class="hero__stage">
+    <canvas id="heroCanvas" class="hero__canvas"></canvas>
+    <div class="hero__overlay" id="heroOverlay"></div>
+
+    <div class="hero__cta" id="heroCta">
+      <p class="hero__eyebrow">Diseño · Estructura · Vivienda</p>
+      <h1 class="hero__title">
+        Construimos<br />
+        <em>tu hogar</em>
+      </h1>
+      <p class="hero__sub">
+        Dikassa S.A.C. — especialistas en Techo Propio.<br />
+        Asesoría sin compromiso en Nueva Cajamarca.
+      </p>
+      <div class="hero__actions">
+        <a href="#contacto" class="hero__btn hero__btn--primary">
+          Habla con nosotros
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#proyectos" class="hero__btn hero__btn--ghost">Ver proyectos</a>
+      </div>
+    </div>
+
+    <div class="hero__scroll-hint" id="heroScrollHint">
+      <div class="hero__scroll-line"></div>
+      <span>scroll</span>
+    </div>
+  </div>
+
+  <div class="hero__spacer" aria-hidden="true"></div>
+</section>
+
+<style>
+  .hero { position: relative; }
+
+  .hero__stage {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100dvh;
+    overflow: hidden;
+    background: var(--color-carbon);
+  }
+
+  .hero__canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 30%,
+      rgba(20, 20, 18, 0.45) 65%,
+      rgba(20, 20, 18, 0.92) 100%
+    );
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  /* ── CTA ─────────────────────────────────────────────────── */
+  .hero__cta {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0 6vw 5rem;
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(16px);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto auto;
+    column-gap: 4rem;
+    align-items: end;
+  }
+
+  .hero__eyebrow {
+    grid-column: 1 / -1;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-madera);
+    margin-bottom: 1rem;
+  }
+
+  .hero__title {
+    grid-column: 1;
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 400;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: var(--color-bone);
+  }
+
+  .hero__title em {
+    font-style: italic;
+    color: var(--color-madera);
+  }
+
+  .hero__sub {
+    grid-column: 2;
+    grid-row: 2;
+    font-size: 0.875rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(245, 242, 238, 0.55);
+    max-width: 280px;
+    text-align: right;
+    padding-bottom: 0.25rem;
+  }
+
+  .hero__actions {
+    grid-column: 1;
+    grid-row: 3;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.75rem;
+  }
+
+  .hero__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .hero__btn--primary {
+    background: var(--color-bone);
+    color: var(--color-carbon);
+  }
+  .hero__btn--primary:hover {
+    background: var(--color-madera);
+    color: var(--color-white);
+    transform: scale(0.98);
+  }
+
+  .hero__btn--ghost {
+    background: transparent;
+    color: rgba(245, 242, 238, 0.6);
+    border: 1px solid rgba(245, 242, 238, 0.2);
+  }
+  .hero__btn--ghost:hover {
+    color: var(--color-bone);
+    border-color: rgba(245, 242, 238, 0.45);
+  }
+
+  /* ── Scroll hint ─────────────────────────────────────────── */
+  .hero__scroll-hint {
+    position: absolute;
+    right: 3vw;
+    bottom: 3rem;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.625rem;
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(245, 242, 238, 0.35);
+    opacity: 0;
+  }
+
+  .hero__scroll-line {
+    width: 1px;
+    height: 52px;
+    background: linear-gradient(to bottom, rgba(245,242,238,0.35), transparent);
+    animation: scrollPulse 2.2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.35; transform: scaleY(1) translateY(0); }
+    50%       { opacity: 0.8;  transform: scaleY(0.6) translateY(4px); }
+  }
+
+  .hero__spacer { height: 500vh; }
+
+  @media (max-width: 768px) {
+    .hero__cta {
+      grid-template-columns: 1fr;
+      padding: 0 1.5rem 4rem;
+    }
+    .hero__sub {
+      grid-column: 1;
+      grid-row: 3;
+      text-align: left;
+      max-width: 100%;
+      margin-top: 1rem;
+    }
+    .hero__actions { grid-row: 4; }
+    .hero__scroll-hint { display: none; }
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+  gsap.registerPlugin(ScrollTrigger)
+
+  const TOTAL_FRAMES = 288
+
+  const canvas  = document.getElementById('heroCanvas') as HTMLCanvasElement
+  const ctx     = canvas.getContext('2d')!
+  const frameObj = { frame: 1 }
+  const images: HTMLImageElement[] = []
+
+  // ── Canvas retina-aware ───────────────────────────────────
+  function resizeCanvas() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2)
+    const w   = window.innerWidth
+    const h   = window.innerHeight
+    canvas.width        = w * dpr
+    canvas.height       = h * dpr
+    canvas.style.width  = w + 'px'
+    canvas.style.height = h + 'px'
+    ctx.scale(dpr, dpr)
+    ctx.imageSmoothingEnabled  = true
+    ctx.imageSmoothingQuality  = 'high'
+  }
+  resizeCanvas()
+  window.addEventListener('resize', () => {
+    resizeCanvas()
+    drawFrame(Math.round(frameObj.frame))
+  })
+
+  // ── Draw ──────────────────────────────────────────────────
+  function drawFrame(index: number) {
+    const img = images[index]
+    if (!img?.complete || !img.naturalWidth) return
+    const w = window.innerWidth
+    const h = window.innerHeight
+    const s = Math.max(w / img.naturalWidth, h / img.naturalHeight)
+    const x = (w - img.naturalWidth  * s) / 2
+    const y = (h - img.naturalHeight * s) / 2
+    ctx.clearRect(0, 0, w, h)
+    ctx.drawImage(img, x, y, img.naturalWidth * s, img.naturalHeight * s)
+  }
+
+  // ── Preload progresivo ────────────────────────────────────
+  function loadFrame(i: number): Promise<void> {
+    return new Promise(resolve => {
+      const img = new Image()
+      img.onload = () => resolve()
+      img.onerror = () => resolve()
+      img.src = `/frames/frame-${String(i).padStart(4, '0')}.webp`
+      images[i] = img
+    })
+  }
+
+  async function preload() {
+    // primeros 40 frames inmediatos
+    await Promise.all(Array.from({ length: 40 }, (_, i) => loadFrame(i + 1)))
+    drawFrame(1)
+    // resto en lotes de 30
+    for (let i = 41; i <= TOTAL_FRAMES; i += 30) {
+      const end = Math.min(i + 29, TOTAL_FRAMES)
+      await Promise.all(Array.from({ length: end - i + 1 }, (_, k) => loadFrame(i + k)))
+      await new Promise(r => setTimeout(r, 16))
+    }
+  }
+  preload()
+
+  // ── GSAP: frames controlados por scroll ───────────────────
+  gsap.to(frameObj, {
+    frame: TOTAL_FRAMES,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#hero',
+      start: 'top top',
+      end: 'bottom bottom',
+      scrub: 1,
+      onUpdate: () => drawFrame(Math.min(TOTAL_FRAMES, Math.max(1, Math.round(frameObj.frame)))),
+    },
+  })
+
+  // ── Overlay aparece en el último 30% ─────────────────────
+  gsap.to('#heroOverlay', {
+    opacity: 1,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#hero',
+      start: '65% top',
+      end: '82% top',
+      scrub: 1.5,
+    },
+  })
+
+  // ── Scroll hint entra al inicio ───────────────────────────
+  gsap.to('#heroScrollHint', {
+    opacity: 1,
+    duration: 1,
+    delay: 0.8,
+    ease: 'power2.out',
+  })
+
+  // ── CTA emerge en el último tramo ────────────────────────
+  gsap.to('#heroCta', {
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: '#hero',
+      start: '75% top',
+      end: '83% top',
+      toggleActions: 'play none none reverse',
+    },
+  })
+
+  // ── Scroll hint se oculta al aparecer CTA ────────────────
+  gsap.to('#heroScrollHint', {
+    opacity: 0,
+    duration: 0.35,
+    scrollTrigger: {
+      trigger: '#hero',
+      start: '72% top',
+      toggleActions: 'play none none reverse',
+    },
+  })
+</script>
