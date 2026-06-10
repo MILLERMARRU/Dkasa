@@ -1,0 +1,318 @@
+---
+const links = [
+  { label: 'Nosotros',     href: '#nosotros'    },
+  { label: 'Servicios',    href: '#servicios'   },
+  { label: 'Techo Propio', href: '#techo-propio'},
+  { label: 'Contacto',     href: '#contacto'    },
+]
+---
+
+<header id="navbar" class="navbar">
+  <!-- Logo -->
+  <a href="/" class="navbar__logo" aria-label="Dikassa inicio">
+    <span class="navbar__logo-mark">D</span>
+    <span class="navbar__logo-text">IKASSA</span>
+  </a>
+
+  <!-- Links desktop -->
+  <nav class="navbar__nav" aria-label="Navegación principal">
+    {links.map(link => (
+      <a href={link.href} class="navbar__link">{link.label}</a>
+    ))}
+  </nav>
+
+  <!-- CTA -->
+  <a href="https://wa.me/51917516901" target="_blank" rel="noopener" class="navbar__cta">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.524 5.855L.057 23.5l5.79-1.52A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.694-.498-5.24-1.37l-.376-.222-3.899 1.023 1.04-3.793-.245-.389A9.953 9.953 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+    </svg>
+    WhatsApp
+  </a>
+
+  <!-- Hamburger mobile -->
+  <button class="navbar__burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</header>
+
+<!-- Menú mobile -->
+<div class="navbar__mobile" id="navMobile" aria-hidden="true">
+  <nav>
+    {links.map(link => (
+      <a href={link.href} class="navbar__mobile-link">{link.label}</a>
+    ))}
+    <a href="https://wa.me/51917516901" target="_blank" rel="noopener" class="navbar__mobile-cta">
+      WhatsApp — 917 516 901
+    </a>
+  </nav>
+</div>
+
+<style>
+  /* ── Base ──────────────────────────────────────────────────────────────── */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.25rem 4vw;
+    /* estado inicial: transparente */
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    transition:
+      background 0.4s ease,
+      border-color 0.4s ease,
+      backdrop-filter 0.4s ease,
+      padding 0.4s ease;
+  }
+
+  /* estado scrolleado — añadido por JS */
+  .navbar.is-scrolled {
+    background: rgba(26, 26, 24, 0.92);
+    border-bottom-color: rgba(245, 242, 238, 0.08);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    padding-top: 0.875rem;
+    padding-bottom: 0.875rem;
+  }
+
+  /* ── Logo ──────────────────────────────────────────────────────────────── */
+  .navbar__logo {
+    display: flex;
+    align-items: baseline;
+    gap: 0.1em;
+    text-decoration: none;
+    color: var(--color-bone);
+    flex-shrink: 0;
+  }
+
+  .navbar__logo-mark {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--color-madera);
+    line-height: 1;
+  }
+
+  .navbar__logo-text {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--color-bone);
+  }
+
+  /* ── Nav links ─────────────────────────────────────────────────────────── */
+  .navbar__nav {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-left: auto;
+  }
+
+  .navbar__link {
+    padding: 0.4rem 0.875rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    color: rgba(245, 242, 238, 0.72);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: color 0.2s ease, background 0.2s ease;
+  }
+
+  .navbar__link:hover {
+    color: var(--color-bone);
+    background: rgba(245, 242, 238, 0.07);
+  }
+
+  /* ── CTA WhatsApp ──────────────────────────────────────────────────────── */
+  .navbar__cta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.125rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--color-carbon);
+    background: var(--color-bone);
+    border-radius: 4px;
+    text-decoration: none;
+    flex-shrink: 0;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .navbar__cta:hover {
+    background: var(--color-madera);
+    color: var(--color-white);
+    transform: scale(0.97);
+  }
+
+  /* ── Hamburger ─────────────────────────────────────────────────────────── */
+  .navbar__burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+  }
+
+  .navbar__burger span {
+    display: block;
+    width: 100%;
+    height: 1.5px;
+    background: var(--color-bone);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+  }
+
+  /* burger abierto */
+  .navbar__burger.is-open span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+  .navbar__burger.is-open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  .navbar__burger.is-open span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
+  /* ── Menú mobile ───────────────────────────────────────────────────────── */
+  .navbar__mobile {
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    background: rgba(26, 26, 24, 0.97);
+    backdrop-filter: blur(24px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+
+  .navbar__mobile.is-open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .navbar__mobile nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 2rem;
+  }
+
+  .navbar__mobile-link {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 8vw, 3rem);
+    font-style: italic;
+    font-weight: 400;
+    color: rgba(245, 242, 238, 0.7);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    transition: color 0.2s ease;
+  }
+
+  .navbar__mobile-link:hover {
+    color: var(--color-madera);
+  }
+
+  .navbar__mobile-cta {
+    margin-top: 2rem;
+    padding: 0.875rem 2rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-carbon);
+    background: var(--color-bone);
+    border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: background 0.2s ease;
+  }
+
+  .navbar__mobile-cta:hover {
+    background: var(--color-madera);
+    color: var(--color-white);
+  }
+
+  /* ── Responsive ────────────────────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .navbar__nav,
+    .navbar__cta {
+      display: none;
+    }
+
+    .navbar__burger {
+      display: flex;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+  gsap.registerPlugin(ScrollTrigger)
+
+  const navbar  = document.getElementById('navbar')!
+  const burger  = document.getElementById('navBurger')!
+  const mobile  = document.getElementById('navMobile')!
+
+  // ── Transparente → sólido al salir del hero ───────────────────────────
+  // El hero ocupa 500vh — cuando el usuario pasa ese punto el navbar se solidifica
+  ScrollTrigger.create({
+    trigger: '#hero',
+    start: 'bottom 80px', // cuando el fondo del hero llega a 80px del top
+    onEnter: () => navbar.classList.add('is-scrolled'),
+    onLeaveBack: () => navbar.classList.remove('is-scrolled'),
+  })
+
+  // ── Hamburger mobile ──────────────────────────────────────────────────
+  let menuOpen = false
+
+  function toggleMenu() {
+    menuOpen = !menuOpen
+    burger.classList.toggle('is-open', menuOpen)
+    mobile.classList.toggle('is-open', menuOpen)
+    burger.setAttribute('aria-expanded', String(menuOpen))
+    mobile.setAttribute('aria-hidden', String(!menuOpen))
+    // bloquear scroll del body cuando el menú está abierto
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+  }
+
+  burger.addEventListener('click', toggleMenu)
+
+  // cerrar al hacer click en un link del menú mobile
+  mobile.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (menuOpen) toggleMenu()
+    })
+  })
+
+  // cerrar con Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menuOpen) toggleMenu()
+  })
+</script>
